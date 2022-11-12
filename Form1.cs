@@ -35,14 +35,14 @@ namespace Aeroport
                 ColB += plane.ColBuil;
                 Res += (plane.ColPas * plane.Pass + plane.ColBuil * plane.Build) * ((100.0m + plane.Percent) / 100.0m);
             }
-            toolStripStatusLabel2.Text = $"Сумма всей выручки: " + Res;
-            toolStripStatusLabel3.Text = $"Кол-во пассажиров: " + Pass;
-            toolStripStatusLabel4.Text = $"Кол-во экипажа:" + ColB;
+            toolStripStatusLabel2.Text = $"Total revenue: " + Res;
+            toolStripStatusLabel3.Text = $"Quantity passanger: " + Pass;
+            toolStripStatusLabel4.Text = $"Quantity crew:" + ColB;
         }
 
         private void dataGridView1_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "Itog")
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "Result")
             {
                 var data = (Flight)dataGridView1.Rows[e.RowIndex].DataBoundItem;
                 sum += (data.ColPas * data.Pass + data.ColBuil * data.Build) * ((100.0m + data.Percent) / 100.0m);
@@ -53,7 +53,7 @@ namespace Aeroport
         private void Add_Click(object sender, EventArgs e)
         {
             var infoForm = new InfoAirFlightes();
-            infoForm.Text = "Добавить рейс";
+            infoForm.Text = "Edith Flights";
             if (infoForm.ShowDialog(this) == DialogResult.OK)
             {
                 flight.Add(infoForm.Flight);
@@ -86,7 +86,7 @@ namespace Aeroport
         private void Delete_Click(object sender, EventArgs e)
         {
             var data = (Flight)dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].DataBoundItem;
-            if (MessageBox.Show($"Do you really want to delete the flight number'{data.numfl}'?",
+            if (MessageBox.Show($"Do you really want to delete the flight number '{data.numfl}'?",
                 "Delete record",
                 MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
